@@ -1,8 +1,6 @@
 function computerPlay(){
     const moves = ['rock', 'paper', 'scissors'];
-    let move_number = Math.floor(Math.random()*3);
-    let selected_move = moves[move_number];
-    console.log('Compuert choose ' + selected_move);
+    let selected_move = moves[Math.floor(Math.random()*3)];
     return selected_move;
 }
 
@@ -12,62 +10,116 @@ function playRound(playerSelection, computerSelection){
     let computerImage = 'images/computer/' + computerSelection + '.png';
     computer_move.src = computerImage;
     if(playerSelection == computerSelection){
-        console.log('Draw!')
+        return 2;
     }else{
         switch (playerSelection) {
             case 'rock':
                 if (computerSelection == 'scissors'){
-                    console.log('You win! Rock beats scissors')
                     return 1;
                 }else{
-                    console.log('You lose! Paper beats rock')
                     return 0;
                 }
                 break;
         
             case 'paper':
                 if (computerSelection == 'rock'){
-                    console.log('You win! Paper beats rock')
                     return 1;
                 }else{
-                    console.log('You lose! Scissors beat paper')
                     return 0;
                 }
                 break;
             case 'scissors':
                 if (computerSelection == 'paper'){
-                    console.log('You win! Scissors beat paper')
                     return 1;
                 }else{
-                    console.log('You lose! Rock beats scissors')
                     return 0;
                 }
-                break;
-            default:
-                alert('bad move')
                 break;
         }
     }
 }
 
-let playerScore = 0;
-let computerscore = 0;
-
 function game(playerSelection){
     let computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection);
+    let result = playRound(playerSelection, computerSelection);
+    return result;
 }
 
+function playerWin(){
+    winner.innerText = "Player win!";
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+    win_box.classList.toggle("not_win")
+    again.addEventListener('click', () => {
+        location.reload(true);
+    })
+}
+
+function computerWin(){
+    winner.innerText = "Computer win!"
+    win_box.classList.toggle("not_win")
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+    again.addEventListener('click', () => {
+            location.reload(true);
+    })
+}
+
+let playerScore = 0;
+let computerScore = 0;
 
 
 rock.addEventListener('click', () => {
-    game('rock');
+    result = game('rock');
+    if(result == 1){
+        playerScore++;
+        p_score.innerText = playerScore;
+    }else if(result == 0){
+        computerScore++;
+        c_score.innerText = computerScore;
+    }
+    if(playerScore == 5){
+        playerWin();
+    }else if(computerScore == 5){
+        computerWin();
+    }
 })
 
 paper.addEventListener('click', () => {
-    game('paper');
+    result = game('paper'); 
+    if(result == 1){
+        playerScore++;
+        p_score.innerText = playerScore;
+    }else if(result == 0){
+        computerScore++;
+        c_score.innerText = computerScore;
+    }
+    if(playerScore == 5){
+        playerWin();
+    }else if(computerScore == 5){
+        computerWin();
+    }
 })
 
 scissors.addEventListener('click', () => {
-    game('scissors');
+    result = game('scissors');
+    if(result == 1){
+        playerScore++;
+        p_score.innerText = playerScore;
+    }else if(result == 0){
+        computerScore++;
+        c_score.innerText = computerScore;
+    }
+    if(playerScore == 5){
+        playerWin();
+    }else if(computerScore == 5){
+        computerWin();
+    }
 })
+
+
+
+
+
