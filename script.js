@@ -3,10 +3,14 @@ function computerPlay(){
     let move_number = Math.floor(Math.random()*3);
     let selected_move = moves[move_number];
     console.log('Compuert choose ' + selected_move);
-    return selected_move
+    return selected_move;
 }
 
 function playRound(playerSelection, computerSelection){
+    let playerImage = 'images/player/' + playerSelection + '.png';
+    player_move.src = playerImage;
+    let computerImage = 'images/computer/' + computerSelection + '.png';
+    computer_move.src = computerImage;
     if(playerSelection == computerSelection){
         console.log('Draw!')
     }else{
@@ -46,22 +50,24 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-function game(){
-    let computer_score = 0;
-    let player_score = 0;
-    for (let i =0; i < 5; i++){
-        playerSelection = prompt('Choose: rock, paper, scissors').toLowerCase();
-        computerSelection = computerPlay();
-        console.log('You choose ' +playerSelection);
-        let result = playRound(playerSelection, computerSelection);
-        if(result){
-            player_score++;
-        }else if(result == 0){
-            computer_score++;
-        }
-    }
-    console.log('Your score ' + player_score + ', computer score ' + computer_score)
+let playerScore = 0;
+let computerscore = 0;
+
+function game(playerSelection){
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
 }
 
-game()
 
+
+rock.addEventListener('click', () => {
+    game('rock');
+})
+
+paper.addEventListener('click', () => {
+    game('paper');
+})
+
+scissors.addEventListener('click', () => {
+    game('scissors');
+})

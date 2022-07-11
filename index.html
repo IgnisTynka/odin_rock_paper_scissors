@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <header>
+        <h1>ROCK PAPER SCISSORS</h1>
+    </header>
+    <div class="moves_images">
+        <div class="player">
+            <div class="player_info">
+                <h3>Player</h3>
+                <div class="player_score">
+                   <p>Player score: </p>
+                   <p id="p_score">0</p> 
+                </div>
+            </div>
+            <img id="player_move" src="" alt="">
+        </div>
+        <div class="computer">
+            <div class="computer_info">
+                <h3>Computer</h3>
+                <div class="computer_score">
+                    <p>Computer score: </p>
+                    <p id="c_score">0</p> 
+                 </div>
+            </div>
+            <img id="computer_move" src="" alt="">
+        </div>
+    </div>
+    <div class="moves">
+        <h3>Choose your move</h3>
+        <div class="buttons">
+            <button id="rock" value="rock">Rock</button>
+            <button id="paper" value="paper">Paper</button>
+            <button id="scissors" value="scissors">Scissors</button>
+        </div>
+    </div>
+    
     
 </body>
 </html>
