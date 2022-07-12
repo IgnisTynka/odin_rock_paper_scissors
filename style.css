@@ -35,7 +35,7 @@ body{
 }
 
 header{
-    height: 150px;
+    height: 125px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -122,3 +122,15 @@ button:hover{
     background-color: #A99985;
     border-color: #DAD2BC;
 }
+
+footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+footer >p, a{
+    font-size: 16px;
+    color: #F5F1ED;
+}
+
